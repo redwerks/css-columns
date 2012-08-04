@@ -32,8 +32,12 @@ function css_columns_shortcode( $params, $content = null ) {
 	extract( shortcode_atts( array(
 		'count' => '1',
 		'gap' => '1em',
+		'empty' => '0',
+		'emptyside' => 'right',
 	), $params ) );
 	$count = (int)$count;
+	$empty = (int)$empty;
+	$emptyside = $emptyside === 'left' ? 'left' : 'right';
 
 	// Trim out any whitespace or breaks appearing in between the column tags and the content
 	// to avoid any unwanted extra spacing caused by the simple presence of the tags
@@ -42,12 +46,29 @@ function css_columns_shortcode( $params, $content = null ) {
 	$content = trim( $content );
 
 	// Don't bother with the div when asked for a single column that won't actually do anything
-	if ( $count < 2 ) {
+	if ( ($count + $empty) < 2 ) {
 		return $content;
 	}
 
-	$style = '';
-	$style .= "-moz-column-count: $count; -webkit-column-count: $count; column-count: $count; ";
-	$style .= "-moz-column-gap: $gap; -webkit-column-gap: $gap; column-gap: $gap; ";
-	return '<div style="' . esc_attr( trim( $style ) ) . '">' . $content . '</div>';
+	$minWidth = ($count + $empty) * 250;
+
+	$id = str_replace('.', '', uniqid('column-', true));
+
+	$html = "<style scoped>\n";
+	$html .= "@media screen and (min-width: {$minWidth}px) {\n";
+	$html .= "	#$id {\n";
+	if ( $count > 1 ) {
+		$html .= "		-moz-column-count: $count; -webkit-column-count: $count; column-count: $count;\n";
+		$html .= "		-moz-column-gap: $gap; -webkit-column-gap: $gap; column-gap: $gap;\n";
+	}
+	if ( $empty > 0 ) {
+		$percent = round( $empty / ($count + $empty) * 100 );
+		$html .= "		margin-$emptyside: $percent%;\n";
+	}
+	$html .= "	}\n";
+	$html .= "}\n";
+	$html .= "</style>\n";
+	$gap = esc_attr( $gap );
+	$html .= "<div id=\"$id\">" . $content . '</div>';
+	return $html;
 }
