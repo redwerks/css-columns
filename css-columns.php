@@ -5,7 +5,7 @@ Plugin URI: https://github.com/redwerks/css-columns
 Description: Provides a [columns] shortcode that gives a secion of post content multiple columns using css3's column properties.
 Author: Redwerks
 Author URI: http://redwerks.org/
-Version: 0.9.0
+Version: 0.9.1
 License: GPL2+
 
 Copyright © 2012 — Redwerks Systems Inc. (http://redwerks.org/)

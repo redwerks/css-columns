@@ -2,7 +2,7 @@
 Tags: post, css, css3, column, columns, shortcode
 Requires at least: 3.2
 Tested up to: 3.2
-Version: 0.9.0
+Version: 0.9.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
