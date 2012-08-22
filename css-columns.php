@@ -50,12 +50,10 @@ function css_columns_shortcode( $params, $content = null ) {
 		return $content;
 	}
 
-	$minWidth = ($count + $empty) * 250;
-
 	$id = str_replace('.', '', uniqid('column-', true));
 
 	$html = "<style scoped>\n";
-	$html .= "@media screen and (min-width: {$minWidth}px) {\n";
+	$html .= "@media screen and (min-width: 420px) {\n";
 	$html .= "	#$id {\n";
 	if ( $count > 1 ) {
 		$html .= "		-moz-column-count: $count; -webkit-column-count: $count; column-count: $count;\n";
