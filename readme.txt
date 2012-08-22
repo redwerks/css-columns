@@ -3,10 +3,11 @@ Tags: post, css, css3, column, columns, shortcode
 Requires at least: 3.2
 Tested up to: 3.2
 Version: 0.9.1
+Stable Tag: 0.9.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Provides a [columns] shortcode that gives a secion of post content multiple columns using css3's column properties.
+Provides a [columns] shortcode that gives a section of post content multiple columns using css3's column properties.
 
 == Description ==
 
