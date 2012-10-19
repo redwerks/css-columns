@@ -5,7 +5,7 @@ Plugin URI: https://github.com/redwerks/css-columns
 Description: Provides a [columns] shortcode that gives a secion of post content multiple columns using css3's column properties.
 Author: Redwerks
 Author URI: http://redwerks.org/
-Version: 0.9.2
+Version: 0.9.3
 License: GPL2+
 
 Copyright © 2012 — Redwerks Systems Inc. (http://redwerks.org/)
@@ -38,6 +38,8 @@ function css_columns_shortcode( $params, $content = null ) {
 	$count = (int)$count;
 	$empty = (int)$empty;
 	$emptyside = $emptyside === 'left' ? 'left' : 'right';
+
+	$content = do_shortcode( $content );
 
 	// Trim out any whitespace or breaks appearing in between the column tags and the content
 	// to avoid any unwanted extra spacing caused by the simple presence of the tags
